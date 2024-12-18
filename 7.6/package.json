@@ -4,11 +4,23 @@
   "description": "first tests with Cypress",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:open:chrome": "cypress open --browser chrome",
+    "cypress:open:edge": "cypress open --browser edge",
+    "cypress:open:electron": "cypress open --browser electron",
+    "cypress:run:chrome": "cypress run --browser chrome",
+    "cypress:run:edge": "cypress run --browser edge",
+    "cypress:run:electron": "cypress run --browser electron",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "cypress:open:mobile": "CYPRESS_VIEWPORT_WIDTH=375 CYPRESS_VIEWPORT_HEIGHT=667 cypress open",
+    "cypress:run:mobile": "CYPRESS_VIEWPORT_WIDTH=375 CYPRESS_VIEWPORT_HEIGHT=667 cypress run"
+
   },
   "author": "OM",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^8.3.0"
-  }
+    "cypress": "^13.16.1"
+  },
+  "keywords": []
 }

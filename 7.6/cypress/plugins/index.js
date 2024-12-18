@@ -16,7 +16,26 @@
  * @type {Cypress.PluginConfig}
  */
 // eslint-disable-next-line no-unused-vars
-module.exports = (on, config) => {
+//module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
-}
+//}
+const fs = require('fs');
+
+module.exports = (on, config) => {
+    const version = config.env.version || 'desktop'; // По умолчанию используем desktop
+    const configFile = `./cypress/config/${version}.json`; // Убедитесь, что путь правильный
+
+    if (fs.existsSync(configFile)) {
+        try {
+            const fileConfig = require(configFile);
+            config = { ...config, ...fileConfig };
+        } catch (error) {
+            console.error(`Ошибка при загрузке конфигурации из файла ${configFile}:`, error);
+        }
+    } else {
+        console.warn(`Файл конфигурации ${configFile} не найден. Используются настройки по умолчанию.`);
+    }
+
+    return config;
+};
